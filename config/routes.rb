@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :students, only: [:new, :create, :show, :edit, :update]
-  resources :school_classes, only: [:new, :create, :show, :edit, :update]
+  resources :students, only: [:index, :new, :create, :show, :edit, :update]
+  resources :school_classes, only: [:index, :new, :create, :show, :edit, :update]
+  get '/students', to: 'students#index'
+  
   get 'students/new', to: 'students#new'
 
   get 'students/create', to: 'students#create'
@@ -10,6 +12,8 @@ Rails.application.routes.draw do
   get 'students/:id/edit', to: 'students#edit'
 
   get 'students/:id/update', to: 'students#update'
+  
+  get '/school_classes', to: 'school_classes#index'
 
   get 'school_classes/new', to: 'school_classes#new'
 
